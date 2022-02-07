@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Room, IntegerRecord, FloatRecord, TextRecord
 
-# Register your models here.
+admin.site.register(Room)
+admin.site.register(IntegerRecord)
+admin.site.register(FloatRecord)
+admin.site.register(TextRecord)

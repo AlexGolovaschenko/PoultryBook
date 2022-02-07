@@ -1,25 +1,48 @@
 from django.db import models
 from logbook.models import Room, IntegerRecord, FloatRecord 
 
-CNT_BIRDS_NUMBER = 'BIRDS'
-CNT_BIRDS_DIED = 'DIED'
-CNT_BIRDS_APPEND = 'APPEND'
+CNT_BIRDS_NUMBER 	= 'BRD_BIRDS'	# количество птицы в птичнике
+CNT_BIRDS_DIED 		= 'BRD_DIED'	# количество умершей птицы (падеж)
+CNT_BIRDS_APPEND 	= 'BRD_APPEND' 	# количество добавленой птицы
+CNT_BIRDS_REMOVED 	= 'BRD_REMOVED'	# количество изьятой птицы
+CNT_BIRDS_WEIGHT 	= 'BRD_WEIGHT'	# средний вес птицы
+CNT_BIRDS_UNIF 		= 'BRD_UNIF'	# значение однородности поголовья
+CNT_CLIMAT_RTEMP 	= 'CLM_RTEMP'	# средняя температура в помещении
+CNT_CLIMAT_RHUM 	= 'CLM_RHUM'	# влажность воздуха в помещении
+CNT_CLIMAT_CO2 		= 'CLM_CO2'		# концентрация CO2 в помещении
+CNT_CLIMAT_NH3 		= 'CLM_NH3'		# концентрация NH3 в помещении
 
-CNT_CHOICES = (
-	(CNT_BIRDS_NUMBER, 'entered_birds_number'),
-	(CNT_BIRDS_DIED, 'entered_birds_died'),
-	(CNT_BIRDS_APPEND, 'entered_birds_append'),
-	)
+CNT_CHOICES = [
+	(CNT_BIRDS_NUMBER, 	'Entered birds number'),
+	(CNT_BIRDS_DIED, 	'Entered birds died'),
+	(CNT_BIRDS_APPEND, 	'Entered birds append'),
+	(CNT_BIRDS_REMOVED, 'Entered birds removed'),
+	(CNT_BIRDS_WEIGHT, 	'Entered birds weight'),
+	(CNT_BIRDS_UNIF, 	'Entered birds uniformity'),
+	(CNT_CLIMAT_RTEMP, 	'Entered room temperature'),
+	(CNT_CLIMAT_RHUM, 	'Entered room humidity'),
+	(CNT_CLIMAT_CO2, 	'Entered CO2 concentration'),
+	(CNT_CLIMAT_NH3, 	'Entered NH3 concentration'),
+	]
 
 RECORDS_TYPES = {
-	CNT_BIRDS_NUMBER: IntegerRecord,
-	CNT_BIRDS_DIED: IntegerRecord,
-	CNT_BIRDS_APPEND: IntegerRecord,
+	CNT_BIRDS_NUMBER 	: IntegerRecord,
+	CNT_BIRDS_DIED 		: IntegerRecord,
+	CNT_BIRDS_APPEND 	: IntegerRecord,
+	CNT_BIRDS_REMOVED 	: IntegerRecord,
+	CNT_BIRDS_WEIGHT 	: FloatRecord,
+	CNT_BIRDS_UNIF 		: FloatRecord,
+	CNT_CLIMAT_RTEMP 	: FloatRecord,
+	CNT_CLIMAT_RHUM 	: FloatRecord,
+	CNT_CLIMAT_CO2 		: FloatRecord,
+	CNT_CLIMAT_NH3 		: FloatRecord,
 	}
 
-class PoultryStatistics(models.Model):
+
+class PoultryKeepingStatistics(models.Model):
 	''' this model has functions for calculate actual values 
-	of livestock in selected poultry house '''
+	of livestock in selected poultry house
+	and append new records to statistics logbook '''
 
 	def current_birds_number(self, room):
 		return 0
@@ -32,20 +55,4 @@ class PoultryStatistics(models.Model):
 		record_model(room= room, content_type= content_type, value= value)
 		record_model.save()
 
-# class PoultryStatistics(models.Model):
-# 	entered_birds_number = models.IntegerField()
-# 	entered_birds_died = models.IntegerField()
-# 	entered_birds_append = models.IntegerField()
-# 	entered_birds_removed = models.IntegerField()
-# 	entered_birds_weight = models.FloatField()
-# 	entered_birds_uniformity = models.FloatField()
-# 	def get_current_birds_number(self):
-# 		pass
-# 	def get_current_birds_weight(self):
-# 		pass
 
-# class ClimatStatistics(models.Model):
-# 	entered_room_temperature = models.FloatField()
-# 	entered_room_humidity = models.FloatField()
-# 	entered_CO2_level = models.FloatField()
-# 	entered_NH3_level = models.FloatField()
