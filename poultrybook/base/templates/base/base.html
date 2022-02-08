@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+	<title>{% block title %} ОВЕН Птицеводство {% endblock %}</title>
+	<link rel="shortcut icon" type="image/png" href="{% static 'base/img/owen.ico' %}" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta property="og:title" content="ОВЕН Птицеводство">
+  	<meta property="og:description" content="Сервис сбора данных о содержании птицы">
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<!-- Bootstrap  -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+   <!-- Font Awesome 5 Icons -->  
+    <script src='https://kit.fontawesome.com/a290fff2ec.js' crossorigin="anonymous"></script>
+
+	<!-- my -->
+	<link rel="stylesheet" href="{% static 'css/base_style.css' %}"> 
+</head>
+
+<body class="bg-secondary">
+	{% include "base/navbar.html" %}    
+
+	<!-- Content -->
+	<div class='bg-white'>
+		<div class="container" style="min-height:70vh">  
+			{% block content %} 
+				<h2>an empty page</h2> 
+			{% endblock %} 
+		</div>
+	</div>
+
+	{% include "base/footer_ua.html" %}
+</body>
+</html>
