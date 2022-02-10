@@ -1,25 +1,12 @@
 <div class='workspace'>
 <h5 class="text-secondary">Микроклимат в помещении</h5>
 <div class='row'>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success text-center'>
-			<div> <i class="fas fa-thermometer-three-quarters" style='font-size:2.3em'></i> </br> <span>Температура</span> </div>
-		</button>	
-	</div>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success'>
-			<div> <i class="fas fa-tint" style='font-size:2.3em'></i> </br> <span>Влажность</span> </div>
-		</button>	
-	</div>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success'>
-			<div> <i class="fab fa-cloudscale" style='font-size:2.3em'></i> </br> <span>СО2</span> </div>
-		</button>	
-	</div>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success'>
-			<div> <i class="fab fa-cloudscale" style='font-size:2.3em'></i> </br> <span>NH3</span> </div>
-		</button>	
-	</div>
+	{% include 'parts/workspace_tab.html' with color_class='warning' icon_class='fas fa-thermometer-three-quarters' title='Температура' only %}
+	
+	{% include 'parts/workspace_tab.html' with color_class='warning' icon_class='fas fa-tint' title='Влажность' only %}
+	
+	{% include 'parts/workspace_tab.html' with color_class='warning' icon_class='fab fa-cloudscale' title='СО2' only %}
+
+	{% include 'parts/workspace_tab.html' with color_class='warning' icon_class='fab fa-cloudscale' title='NH3' only %}
 </div>
 </div>

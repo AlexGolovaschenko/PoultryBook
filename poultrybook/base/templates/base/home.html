@@ -4,10 +4,16 @@
 	<div class='conteiner-fluid'>
 		<h1 class='text-center pt-3'><span class='badge badge-pill badge-primary'>Помещение {{ room }}</span></h1>
 	</div>
-	<div class='conteiner-fluid border-top'>
+	<div class='conteiner-fluid border-top mt-3'>
 		{% include 'poultry_statistics/poultry_workspace.html' %}
 	</div>
-	<div class='conteiner-fluid border-top'>
+	<div class='conteiner-fluid border-top mt-3'>
 		{% include 'poultry_statistics/climat_workspace.html' %}
 	</div>
+	<div class='conteiner-fluid border-top mt-3'>
+		{% include 'service_statistics/service_workspace.html' %}
+	</div>
+	<div class='conteiner-fluid border-top mt-3 pb-3'>
+		{% include 'vet_statistics/vet_workspace.html' %}
+	</div>		
 {% endblock %}

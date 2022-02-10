@@ -1,35 +1,20 @@
 <div class='workspace'>
 <h5 class="text-secondary">Поголовье птицы</h5>
 <div class='row'>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success text-center'>
-			<div> <i class="fas fa-kiwi-bird" style='font-size:2.3em'></i> </br> <span>Поголовье</span> </div>
-		</button>	
-	</div>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success'>
-			<div> <i class="fas fa-skull-crossbones" style='font-size:2.3em'></i> </br> <span>Падеж</span> </div>
-		</button>	
-	</div>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success'>
-			<div> <i class="fas fa-plus-square" style='font-size:2.3em'></i> </br> <span>Добавлено</span> </div>
-		</button>	
-	</div>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success'>
-			<div> <i class="fas fa-minus-square" style='font-size:2.3em'></i> </br> <span>Изьято</span> </div>
-		</button>	
-	</div>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success'>
-			<div> <i class="fas fa-balance-scale" style='font-size:2.3em'></i> </br> <span>Вес</span> </div>
-		</button>	
-	</div>
-	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-		<button class='ws-card btn btn-success'>
-			<div> <i class="fas fa-feather" style='font-size:2.3em'></i> </br> <span>Однородность</span> </div>
-		</button>	
-	</div>
+	{% include 'parts/workspace_tab.html' with color_class='success' icon_class='fas fa-kiwi-bird' title='Поголовье' only %}
+
+	{% include 'parts/workspace_tab.html' with color_class='success' icon_class='fas fa-skull-crossbones' title='Падеж' only %}
+
+	{% include 'parts/workspace_tab.html' with color_class='success' icon_class='fas fa-plus-circle' title='Добавлено' only %}
+
+	{% include 'parts/workspace_tab.html' with color_class='success' icon_class='fas fa-minus-circle' title='Изьято' only %}
+
+	{% include 'parts/workspace_tab.html' with color_class='success' icon_class='fas fa-arrow-alt-circle-right' title='Перемещение' only %}
+</div>
+
+<div class='row'>
+	{% include 'parts/workspace_tab.html' with color_class='success' icon_class='fas fa-balance-scale' title='Вес' only %}
+
+	{% include 'parts/workspace_tab.html' with color_class='success' icon_class='fas fa-feather' title='Однородность' only %}
 </div>
 </div>
