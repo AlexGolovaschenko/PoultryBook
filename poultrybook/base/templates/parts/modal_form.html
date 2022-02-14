@@ -1,0 +1,41 @@
+<div class='modal' id='{{ html_id }}'>
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <form action="" method="post">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{ title }}</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      {% if form %}
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+            {% endfor %}
+      {% else %}
+            <p>Data not provided!</p>
+      {% endif %}
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      {% if form %}
+          <button type="submit" value="Submit" class="btn btn-success" >Применить</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Отмена</button>
+      {% else %}
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+      {% endif %}
+      </div>
+    </form>
+    </div>
+    </div>
+</div>
+

@@ -1,22 +1,21 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-	<div>
-		{% include 'parts/popup_form.html' with form=birds_number_form csrf_token=csrf_token only %}
-	</div>
+
 	<div class='conteiner-fluid'>
 		<h1 class='text-center pt-3'><span class='badge badge-pill badge-primary'>Помещение {{ room }}</span></h1>
 	</div>
 	<div class='conteiner-fluid border-top mt-3'>
-		{% include 'poultry_statistics/poultry_workspace.html' %}
+		{% include 'parts/workspace.html' with title='Поголовье птицы' items=birds_workspace_items csrf_token=csrf_token only %}
+	</div>	
+
+	<div class='conteiner-fluid border-top mt-3'>
+		{% include 'parts/workspace.html' with title='Микроклимат в помещении' items=climat_workspace_items csrf_token=csrf_token only %}
 	</div>
 	<div class='conteiner-fluid border-top mt-3'>
-		{% include 'poultry_statistics/climat_workspace.html' %}
-	</div>
-	<div class='conteiner-fluid border-top mt-3'>
-		{% include 'service_statistics/service_workspace.html' %}
+		{% include 'parts/workspace.html' with title='Сервисные работы' items=service_workspace_items csrf_token=csrf_token only %}
 	</div>
 	<div class='conteiner-fluid border-top mt-3 pb-3'>
-		{% include 'vet_statistics/vet_workspace.html' %}
+		{% include 'parts/workspace.html' with title='Ветеринарные работы' items=vet_workspace_items csrf_token=csrf_token only %}
 	</div>		
 {% endblock %}

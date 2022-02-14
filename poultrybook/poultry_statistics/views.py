@@ -12,20 +12,12 @@ from .forms import IntegerRecordForm, FloatRecordForm
 
 
 
-
-def birds_number_view(reques):
-	content_type = CNT_BIRDS_NUMBER
-	form = handle_form(request, content_type)
-	return render(request, '', {'form': form})
-
-
-
 def handle_form(request, content_type):
 	FormClass = get_form_class(content_type)
 	if request.method == "POST":
 		form = FormClass(request.POST)
 		if form.is_valid():
-			print('value is: ', form.cleaned_data['value'])
+			print(f'value of {content_type} is: ', form.cleaned_data['value'])
 			pass
 	else:
 		form = FormClass()
