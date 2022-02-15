@@ -40,9 +40,6 @@ INSTALLED_APPS = [
     'base',
     'users',
     'logbook',
-    'poultry_statistics',
-    'service_statistics',
-    'vet_statistics',
 ]
 
 MIDDLEWARE = [

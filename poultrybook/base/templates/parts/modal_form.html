@@ -13,15 +13,9 @@
       <div class="modal-body">
       {% if form %}
             {% csrf_token %}
-
-            {% for field in form %}
-            <div class="fieldWrapper">
-                {{ field.errors }}
-                {{ field.label_tag }} {{ field }}
-            </div>
-            {% endfor %}
+            {{ form }}
       {% else %}
-            <p>Data not provided!</p>
+            <p>Form not provided!</p>
       {% endif %}
       </div>
 

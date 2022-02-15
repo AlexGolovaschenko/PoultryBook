@@ -2,10 +2,11 @@
 
 {% block content %}
 
-	<div class='conteiner-fluid'>
-		<h1 class='text-center pt-3'><span class='badge badge-pill badge-primary'>Помещение {{ room }}</span></h1>
+	<div class='conteiner fixed-top bg-white mx-auto p-0' style="margin-top: 51px; max-width: 1000px;">
+		<h2 class='text-center border-bottom mx-3 my-0 py-2'><span class='badge badge-pill badge-primary'>Помещение {{ room }}</span></h2>
 	</div>
-	<div class='conteiner-fluid border-top mt-3'>
+	<div class='bg-white' style="padding-top: 60px;"></div>
+	<div class='conteiner-fluid'>
 		{% include 'parts/workspace.html' with title='Поголовье птицы' items=birds_workspace_items csrf_token=csrf_token only %}
 	</div>	
 
