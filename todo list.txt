@@ -1,0 +1,16 @@
+pool:
+- ...
+
+------------------------------------------------------------------
+version 0.1 (MHP demo):
+- display logs table
+- make way for select number of poultry hous
+- make forms more rich, add choices to forms
+- fix mobile version design (navbar and e.t.c)
+- add documentation (replace contacts from footer to it)
+- ukrainian language
+
+- user login / logout (no registration)
+- user groupes
+- filter available forms by user groupe
+------------------------------------------------------------------
