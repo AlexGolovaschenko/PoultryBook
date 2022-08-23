@@ -1,18 +1,19 @@
 pool:
 - fill up User Manual section on documentation page
-- ...
+- add the record id to logs table
+- 
 
 ------------------------------------------------------------------
 version 0.1 (MHP demo):
-- display logs table
++ display logs table
 - make way for select number of poultry hous
 - make forms more rich, add choices to forms
 - fix mobile version design (navbar and e.t.c)
 + add documentation page
 + replace contacts information from footer to documentation page
-- ukrainian language
++ ukrainian language
 
-- user login / logout (no registration)
++ user login / logout (no registration)
 - user groupes
 - filter available forms by user groupe
 ------------------------------------------------------------------

@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from . import configs
-from .models import IntegerRecord, FloatRecord, TextRecord, Room
-from .forms import IntegerRecordForm, FloatRecordForm, TextRecordForm
+from .models import Room
+from .utils import get_datatype_model, get_datatype_form
 
 
 def workspace_view(request):
@@ -17,15 +17,22 @@ def workspace_view(request):
 
 
 def log_view(request):
-	context = {}
+	room_number = 1
+	room = Room.objects.get(number=room_number)
+	context = {'records': []}
+	for record in room.records_list():
+		context['records'].append(record.log_message())
 	return render(request, 'logbook/logslist.html', context)
 
 
 def record_detail_view(request, record_type):
+	next_page='logbook:workspace'
 	try:
 		context = configs.RECORDS_CONFIG[record_type]
-		context['form'] = handle_form(request, record_type)
-	except:
+		context['form'], submit_success = handle_form(request, record_type)
+		if submit_success: 
+			return redirect(next_page)
+	except Exception as e:
 		context = {}
 	return render(request, 'logbook/record_detail.html', context)
 
@@ -33,31 +40,19 @@ def record_detail_view(request, record_type):
 def handle_form(request, content_type):
 	if not content_type:
 		return None
-
-	FormClass = get_form_class(content_type)
+	FormClass = get_datatype_form(content_type)
 	form = FormClass(request.POST or None)
 	if form.is_valid() and (form.cleaned_data['content_type'] == content_type):
 		print(f'Entered value of {content_type} is: ', form.cleaned_data['value'])
 		save_form_data(form.cleaned_data)
-		return form
+		return form, form.is_valid()
 	else:
-		return FormClass(initial={'content_type': content_type})
-
-
-def get_form_class(content_type):
-	if configs.RECORDS_TYPES[content_type] == IntegerRecord:
-		return IntegerRecordForm
-	elif configs.RECORDS_TYPES[content_type] == FloatRecord:
-		return FloatRecordForm
-	elif configs.RECORDS_TYPES[content_type] == TextRecord:
-		return TextRecordForm
-	else:
-		raise Exception('Record dtype does not supported')
+		return FormClass(initial={'content_type': content_type}), False
 
 
 def save_form_data(cleaned_data):
 	content_type = cleaned_data['content_type']
 	room = Room.objects.first()
-	Model = configs.RECORDS_TYPES[content_type]
+	Model = get_datatype_model(content_type)
 	new_record = Model(room=room, content_type=content_type, value=cleaned_data['value'])
 	new_record.save()

@@ -1,16 +1,29 @@
+from itertools import chain
 from django.db import models
+
+from .configs import RECORDS_CONFIG
 
 
 class Room(models.Model):
 	''' model with data about keeping room '''
 	number = models.IntegerField(verbose_name='Номер помещения')
 	
-	def __str__(self):
-		return f'Помещение {self.number}'
-
 	class Meta:
 		verbose_name = 'Помещение'
 		verbose_name_plural = 'Помещения'
+
+	def __str__(self):
+		return f'Помещение {self.number}'
+
+	def records_list(self, sorted=True):
+		r_list = list(chain(
+			self.integerrecord_set.all(), 
+			self.floatrecord_set.all(), 
+			self.textrecord_set.all()
+		))
+		if sorted:
+			r_list.sort(key=lambda x: x.timestamp, reverse=True)
+		return r_list
 
 
 class Record(models.Model):
@@ -18,11 +31,27 @@ class Record(models.Model):
 	timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Время и дата')
 	content_type = models.CharField(max_length=100, verbose_name='Тип записи')
 
+	class Meta:
+		abstract = True
+
 	def __str__(self):
 		return f'Запись {self.id}'
 
-	class Meta:
-		abstract = True
+	def log_message(self, string=False):
+		data_description = RECORDS_CONFIG.get(self.content_type, {})
+		data_title = data_description.get('title', ' ')
+		message = {
+			'id': self.id,
+			'timestamp': self.timestamp,
+			'room': f'Приміщення {self.room.number}',
+			'room_number': self.room.number,
+			'data_title': data_title,
+			'data_value': self.value,
+		}
+		if not string:
+			return message
+		else:
+			return f"{message['timestamp'].strftime('%d-%m-%Y %H:%M:%S')} | {message['room']} | {message['data_title']}: {message['data_value']}"
 
 
 class IntegerRecord(Record):

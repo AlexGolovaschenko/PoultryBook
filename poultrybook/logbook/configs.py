@@ -1,5 +1,3 @@
-from .models import IntegerRecord, FloatRecord, TextRecord
-
 CNT_BIRDS_NUMBER 	= 'BRD_BIRDS'	# количество птицы в птичнике
 CNT_BIRDS_DIED 		= 'BRD_DIED'	# количество умершей птицы (падеж)
 CNT_BIRDS_APPEND 	= 'BRD_APPEND' 	# количество добавленой птицы
@@ -20,23 +18,23 @@ CNT_VET_CURING		= 'VET_CURING'	# лечение птицы
 
 
 RECORDS_TYPES = {
-	CNT_BIRDS_NUMBER 	: IntegerRecord,
-	CNT_BIRDS_DIED 		: IntegerRecord,
-	CNT_BIRDS_APPEND 	: IntegerRecord,
-	CNT_BIRDS_REMOVED 	: IntegerRecord,
-	CNT_BIRDS_WEIGHT 	: FloatRecord,
-	CNT_BIRDS_UNIF 		: FloatRecord,
-	CNT_CLIMAT_RTEMP 	: FloatRecord,
-	CNT_CLIMAT_RHUM 	: FloatRecord,
-	CNT_CLIMAT_CO2 		: FloatRecord,
-	CNT_CLIMAT_NH3 		: FloatRecord,
-	CNT_SERVICE_INSPECT	: TextRecord,
-	CNT_SERVICE_REPAIR	: TextRecord,
-	CNT_SERVICE_SETUP	: TextRecord,
-	CNT_SERVICE_REPLACE	: TextRecord,
-	CNT_VET_INSPECT		: TextRecord,
-	CNT_VET_VACCINATION	: TextRecord,
-	CNT_VET_CURING		: TextRecord,
+	CNT_BIRDS_NUMBER 	: 'logbook.IntegerRecord',
+	CNT_BIRDS_DIED 		: 'logbook.IntegerRecord',
+	CNT_BIRDS_APPEND 	: 'logbook.IntegerRecord',
+	CNT_BIRDS_REMOVED 	: 'logbook.IntegerRecord',
+	CNT_BIRDS_WEIGHT 	: 'logbook.FloatRecord',
+	CNT_BIRDS_UNIF 		: 'logbook.FloatRecord',
+	CNT_CLIMAT_RTEMP 	: 'logbook.FloatRecord',
+	CNT_CLIMAT_RHUM 	: 'logbook.FloatRecord',
+	CNT_CLIMAT_CO2 		: 'logbook.FloatRecord',
+	CNT_CLIMAT_NH3 		: 'logbook.FloatRecord',
+	CNT_SERVICE_INSPECT	: 'logbook.TextRecord',
+	CNT_SERVICE_REPAIR	: 'logbook.TextRecord',
+	CNT_SERVICE_SETUP	: 'logbook.TextRecord',
+	CNT_SERVICE_REPLACE	: 'logbook.TextRecord',
+	CNT_VET_INSPECT		: 'logbook.TextRecord',
+	CNT_VET_VACCINATION	: 'logbook.TextRecord',
+	CNT_VET_CURING		: 'logbook.TextRecord',
 	}
 
 
