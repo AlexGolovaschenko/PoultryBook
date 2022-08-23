@@ -8,7 +8,7 @@
     <h5>Выйти из учетной записи?</h5>
     <form method="post" action="{% url 'users:logout' %}">
         {% csrf_token %}
-        <button class="btn btn-primary" type="submit" value="login">Выйти</button>
+        <button class="btn btn-primary" type="submit" value="login">Вийти</button>
         <input type="hidden" name="next" value="{{ next }}">
     </form>
     

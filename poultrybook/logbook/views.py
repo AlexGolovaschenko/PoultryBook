@@ -16,6 +16,11 @@ def workspace_view(request):
 	return render(request, 'logbook/workspace.html', context)
 
 
+def log_view(request):
+	context = {}
+	return render(request, 'logbook/logslist.html', context)
+
+
 def record_detail_view(request, record_type):
 	try:
 		context = configs.RECORDS_CONFIG[record_type]

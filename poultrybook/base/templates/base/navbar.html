@@ -5,28 +5,28 @@
         <div class="container p-0 base-content-width">
             <a class="navbar-brand pl-2" href="{% url 'logbook:workspace' %}">
                 <span class="d-none d-md-inline">
-                <img src="{% static 'base/img/logo-white.svg' %}" alt="Logo" style="height:30px;">
+                <img src="{% static 'base/img/logo-white-ua.svg' %}" alt="Logo" style="height:30px;">
                 </span>
-                <span class='d-md-none' style="">
+                <span class='d-md-none'>
                     <img src="{% static 'base/img/logo-owen-white.svg' %}" alt="Logo" style="height:28px; margin-top: 1px; margin-bottom: 1px;">
                 </span>
             </a>
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Журнал</a>
+                    <a class="nav-link" href="{% url 'logbook:log' %}">Журнал</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Справка</a>
+                    <a class="nav-link" href="{% url 'docs' %}">Справка</a>
                 </li>
 
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:logout' %}">Выйти</a>
+                        <a class="nav-link" href="{% url 'users:logout' %}">Вийти</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:login' %}?next={% url 'logbook:workspace' %}">Войти</a>
+                        <a class="nav-link" href="{% url 'users:login' %}?next={% url 'logbook:workspace' %}">Увійти</a>
                     </li>
                 {% endif %}
 

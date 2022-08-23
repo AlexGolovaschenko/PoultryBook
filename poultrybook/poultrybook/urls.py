@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from base.views import docs_view
+
 urlpatterns = [
     path('', include('logbook.urls')),
     path('user/', include('users.urls')),
     path('admin/', admin.site.urls),
+    path('docs/', docs_view, name='docs')
 ]
