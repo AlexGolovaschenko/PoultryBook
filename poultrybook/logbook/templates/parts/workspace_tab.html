@@ -1,9 +1,9 @@
 <div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
-	<a class='ws-card btn btn-{{ color_class }}' href="{% url 'logbook:record' html_id %}">
+	<a class='ws-card btn btn-{{ color_class }}' href="{% url 'logbook:record' room html_id %}">
 		<i class="{{ icon_class }}" style='font-size:2.3em'></i> 
 		</br> 
 		<span>{{ title }}</span> 
 	</a>	
 </div>
 
-{% include 'parts/modal_form.html' with title=title html_id=html_id form=form csrf_token=csrf_token %}
+{#% include 'parts/modal_form.html' with title=title html_id=html_id form=form csrf_token=csrf_token %#}

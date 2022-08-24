@@ -1,12 +1,15 @@
 pool:
 - fill up User Manual section on documentation page
 - add the record id to logs table
-- 
+- add filter for logs by room number
+- add pagination for logs table
+- add REST API
+
 
 ------------------------------------------------------------------
 version 0.1 (MHP demo):
 + display logs table
-- make way for select number of poultry hous
++ make way for select number of poultry hous
 - make forms more rich, add choices to forms
 + fix mobile version design (navbar and e.t.c)
 + add documentation page
@@ -16,4 +19,5 @@ version 0.1 (MHP demo):
 + user login / logout (no registration)
 - user groups
 - filter available forms by user groupe
+
 ------------------------------------------------------------------

@@ -3,7 +3,7 @@
 <div class='row'>
 	{% for item in items %}
 
-		{% include 'parts/workspace_tab.html' with title=item.title html_id=item.id color_class=item.color_class icon_class=item.icon_class form=item.form csrf_token=csrf_token only %}
+		{% include 'parts/workspace_tab.html' with room=room title=item.title html_id=item.id color_class=item.color_class icon_class=item.icon_class form=item.form csrf_token=csrf_token only %}
 	
 	{% endfor %}
 </div>

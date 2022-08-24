@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top p-1">
         <div class="container p-0 base-content-width">
             <!-- navbar brend -->
-            <a class="navbar-brand pl-2" href="{% url 'logbook:workspace' %}">
+            <a class="navbar-brand pl-2" href="{% url 'logbook:home' %}">
                 <span class="d-none d-md-inline">
                     <img src="{% static 'base/img/logo-white-ua.svg' %}" alt="Logo" style="height:30px;">
                 </span>
@@ -23,7 +23,7 @@
                 <div class="border-top border-secondary d-sm-none mt-2"></div>
                 <ul class="navbar-nav ml-auto pl-3">
                     <li class="nav-item d-sm-none">
-                        <a class="nav-link" href="{% url 'logbook:workspace' %}">Головна</a>
+                        <a class="nav-link" href="{% url 'logbook:home' %}">Головна</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logbook:log' %}">Журнал</a>
@@ -38,7 +38,7 @@
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:login' %}?next={% url 'logbook:workspace' %}">Увійти</a>
+                            <a class="nav-link" href="{% url 'users:login' %}?next={% url 'logbook:home' %}">Увійти</a>
                         </li>
                     {% endif %}
                 </ul>

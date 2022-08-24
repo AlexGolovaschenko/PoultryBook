@@ -5,9 +5,13 @@ from .models import Room
 from .utils import get_datatype_model, get_datatype_form
 
 
-def workspace_view(request):
+def home_view(request):
+	return redirect('logbook:rooms_list')
+
+
+def workspace_view(request, room_number):
 	context = {
-		'room': 13,
+		'room': room_number,
 		'birds_workspace_items': configs.BIRDS_WORKSPACE_CONFIG,
 		'climat_workspace_items': configs.CLIMAT_WORKSPACE_CONFIG,
 		'service_workspace_items': configs.SERVICE_WORKSPACE_CONFIG,
@@ -16,43 +20,50 @@ def workspace_view(request):
 	return render(request, 'logbook/workspace.html', context)
 
 
+def rooms_list_view(request):
+	rooms = Room.objects.all()
+	return render(request, 'logbook/rooms_list.html', {'rooms':rooms})
+
+
 def log_view(request):
-	room_number = 2
-	room = Room.objects.get(number=room_number)
+	all_rooms = Room.objects.all()
 	context = {'records': []}
-	for record in room.records_list():
-		context['records'].append(record.log_message())
+	for room in all_rooms:
+		for record in room.records_list(sorted=False):
+			context['records'].append(record.log_message())
+	context['records'].sort(key=lambda x: x['timestamp'], reverse=True)
 	return render(request, 'logbook/logslist.html', context)
 
 
-def record_detail_view(request, record_type):
-	next_page='logbook:workspace'
+def record_detail_view(request, room_number, record_type):
 	try:
 		context = configs.RECORDS_CONFIG[record_type]
-		context['form'], submit_success = handle_form(request, record_type)
+		context['room'] = room_number
+		context['form'], submit_success = handle_form(request, room_number, record_type)
 		if submit_success: 
-			return redirect(next_page)
+			return redirect('logbook:workspace', room_number=room_number)
 	except Exception as e:
-		context = {}
+		print(e)
+		context = {'room':room_number}
 	return render(request, 'logbook/record_detail.html', context)
 
 
-def handle_form(request, content_type):
+def handle_form(request, room_number, content_type):
 	if not content_type:
 		return None
 	FormClass = get_datatype_form(content_type)
 	form = FormClass(request.POST or None)
 	if form.is_valid() and (form.cleaned_data['content_type'] == content_type):
 		print(f'Entered value of {content_type} is: ', form.cleaned_data['value'])
-		save_form_data(form.cleaned_data)
+		save_form_data(room_number, form.cleaned_data)
 		return form, form.is_valid()
 	else:
 		return FormClass(initial={'content_type': content_type}), False
 
 
-def save_form_data(cleaned_data):
+def save_form_data(room_number, cleaned_data):
 	content_type = cleaned_data['content_type']
-	room = Room.objects.first()
+	room = Room.objects.get(number=room_number)
 	Model = get_datatype_model(content_type)
 	new_record = Model(room=room, content_type=content_type, value=cleaned_data['value'])
 	new_record.save()
