@@ -2,21 +2,22 @@
 
 {% block content %}
 
-	<div class='conteiner fixed-top bg-white mx-auto p-0' style="margin-top: 51px; max-width: 1000px;">
-		<h2 class='text-center border-bottom mx-3 my-0 py-2'><span class='badge badge-pill badge-primary'>Приміщення {{ room }}</span></h2>
+	<div class=''>
+		<h2 class='text-center pt-4 '>
+			<span class='badge badge-pill badge-primary' style="padding: 12px">Приміщення {{ room }}</span>
+		</h2>
 	</div>
-	<div class='bg-white' style="padding-top: 60px;"></div>
-	<div class='conteiner-fluid'>
+	<div class='conteiner-fluid border-top mt-3 pt-1'>
 		{% include 'parts/workspace_row.html' with title="Поголів'я птиці" items=birds_workspace_items csrf_token=csrf_token only %}
 	</div>	
 
-	<div class='conteiner-fluid border-top mt-3'>
+	<div class='conteiner-fluid border-top mt-3 pt-1'>
 		{% include 'parts/workspace_row.html' with title='Мікроклімат в приміщенні' items=climat_workspace_items csrf_token=csrf_token only %}
 	</div>
-	<div class='conteiner-fluid border-top mt-3'>
-		{% include 'parts/workspace_row.html' with title='Сервісні работи' items=service_workspace_items csrf_token=csrf_token only %}
+	<div class='conteiner-fluid border-top mt-3 pt-1'>
+		{% include 'parts/workspace_row.html' with title='Сервісні роботи' items=service_workspace_items csrf_token=csrf_token only %}
 	</div>
-	<div class='conteiner-fluid border-top mt-3 pb-3'>
-		{% include 'parts/workspace_row.html' with title='Ветеринарні работи' items=vet_workspace_items csrf_token=csrf_token only %}
+	<div class='conteiner-fluid border-top mt-3 pt-1 pb-3'>
+		{% include 'parts/workspace_row.html' with title='Ветеринарні роботи' items=vet_workspace_items csrf_token=csrf_token only %}
 	</div>		
 {% endblock %}

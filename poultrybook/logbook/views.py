@@ -17,7 +17,7 @@ def workspace_view(request):
 
 
 def log_view(request):
-	room_number = 1
+	room_number = 2
 	room = Room.objects.get(number=room_number)
 	context = {'records': []}
 	for record in room.records_list():
