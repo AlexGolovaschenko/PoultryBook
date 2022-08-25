@@ -15,6 +15,7 @@ version 0.1 (MHP demo):
 + add documentation page
 + replace contacts information from footer to documentation page
 + ukrainian language
++ change timezone to UA
 
 + user login / logout (no registration)
 - user groups
