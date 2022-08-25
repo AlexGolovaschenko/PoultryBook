@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+<<<<<<< HEAD
 	<div class=''>
 		<h2 class='text-center pt-4 '>
 			<a class='badge badge-pill badge-primary' style="padding: 12px" href="{% url 'logbook:rooms_list' %}">
@@ -10,14 +11,32 @@
 	</div>
 	<div class='conteiner-fluid border-top mt-3 pt-1'>
 		{% include 'parts/workspace_row.html' with room=room title="Поголів'я птиці" items=birds_workspace_items csrf_token=csrf_token only %}
+=======
+
+	<div class=''>
+		<h2 class='text-center pt-4 '>
+			<span class='badge badge-pill badge-primary' style="padding: 12px">Приміщення {{ room }}</span>
+		</h2>
+	</div>
+	<div class='conteiner-fluid border-top mt-3'>
+		{% include 'parts/workspace_row.html' with title="Поголів'я птиці" items=birds_workspace_items csrf_token=csrf_token only %}
+>>>>>>> d2fc396e258a020090e7ca1f8e0c5d70e23293c5
 	</div>	
 	<div class='conteiner-fluid border-top mt-3 pt-1'>
 		{% include 'parts/workspace_row.html' with room=room title='Мікроклімат в приміщенні' items=climat_workspace_items csrf_token=csrf_token only %}
 	</div>
+<<<<<<< HEAD
 	<div class='conteiner-fluid border-top mt-3 pt-1'>
 		{% include 'parts/workspace_row.html' with room=room title='Сервісні роботи' items=service_workspace_items csrf_token=csrf_token only %}
 	</div>
 	<div class='conteiner-fluid border-top mt-3 pt-1 pb-3'>
 		{% include 'parts/workspace_row.html' with room=room title='Ветеринарні роботи' items=vet_workspace_items csrf_token=csrf_token only %}
+=======
+	<div class='conteiner-fluid border-top mt-3'>
+		{% include 'parts/workspace_row.html' with title='Сервісні роботи' items=service_workspace_items csrf_token=csrf_token only %}
+	</div>
+	<div class='conteiner-fluid border-top mt-3 pb-3'>
+		{% include 'parts/workspace_row.html' with title='Ветеринарні роботи' items=vet_workspace_items csrf_token=csrf_token only %}
+>>>>>>> d2fc396e258a020090e7ca1f8e0c5d70e23293c5
 	</div>		
 {% endblock %}
