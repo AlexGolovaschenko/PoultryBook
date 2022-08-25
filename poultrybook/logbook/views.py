@@ -1,14 +1,17 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from . import configs
 from .models import Room
 from .utils import get_datatype_model, get_datatype_form
 
 
+@login_required
 def home_view(request):
 	return redirect('logbook:rooms_list')
 
 
+@login_required
 def workspace_view(request, room_number):
 	context = {
 		'room': room_number,
@@ -20,11 +23,13 @@ def workspace_view(request, room_number):
 	return render(request, 'logbook/workspace.html', context)
 
 
+@login_required
 def rooms_list_view(request):
 	rooms = Room.objects.all()
 	return render(request, 'logbook/rooms_list.html', {'rooms':rooms})
 
 
+@login_required
 def log_view(request):
 	all_rooms = Room.objects.all()
 	context = {'records': []}
@@ -35,6 +40,7 @@ def log_view(request):
 	return render(request, 'logbook/logslist.html', context)
 
 
+@login_required
 def record_detail_view(request, room_number, record_type):
 	try:
 		context = configs.RECORDS_CONFIG[record_type]

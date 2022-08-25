@@ -2,6 +2,7 @@ pool:
 - fill up User Manual section on documentation page
 - add the record id to logs table
 - add filter for logs by room number
+- add filter for logs by data kategory
 - add pagination for logs table
 - add REST API
 
@@ -16,9 +17,11 @@ version 0.1 (MHP demo):
 + replace contacts information from footer to documentation page
 + ukrainian language
 + change timezone to UA
-
 + user login / logout (no registration)
-- user groups
-- filter available forms by user groupe
++ user groups
++ filter available forms by user groupe
++ add login required for views
+
+- prepare for presentation
 
 ------------------------------------------------------------------

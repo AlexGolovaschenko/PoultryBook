@@ -11,6 +11,12 @@ class Room(models.Model):
 	class Meta:
 		verbose_name = 'Помещение'
 		verbose_name_plural = 'Помещения'
+		permissions = [
+            ("add_livestock_record", "Can add a livestock category records"),
+            ("add_climat_record", "Can add a climat category records"),
+            ("add_service_record", "Can add a service category records"),
+            ("add_vet_record", "Can add a veterinarian category records"),
+        ]
 
 	def __str__(self):
 		return f'Помещение {self.number}'

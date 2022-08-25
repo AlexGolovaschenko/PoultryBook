@@ -8,16 +8,28 @@
 			</a>
 		</h2>
 	</div>
-	<div class='conteiner-fluid border-top mt-3 pt-1'>
-		{% include 'parts/workspace_row.html' with room=room title="Поголів'я птиці" items=birds_workspace_items csrf_token=csrf_token only %}
-	</div>	
-	<div class='conteiner-fluid border-top mt-3 pt-1'>
-		{% include 'parts/workspace_row.html' with room=room title='Мікроклімат в приміщенні' items=climat_workspace_items csrf_token=csrf_token only %}
-	</div>
-	<div class='conteiner-fluid border-top mt-3 pt-1'>
-		{% include 'parts/workspace_row.html' with room=room title='Сервісні роботи' items=service_workspace_items csrf_token=csrf_token only %}
-	</div>
-	<div class='conteiner-fluid border-top mt-3 pt-1 pb-3'>
-		{% include 'parts/workspace_row.html' with room=room title='Ветеринарні роботи' items=vet_workspace_items csrf_token=csrf_token only %}
-	</div>		
+
+	{% if perms.logbook.add_livestock_record %}
+		<div class='conteiner-fluid border-top mt-3 pt-1'>
+			{% include 'parts/workspace_row.html' with room=room title="Поголів'я птиці" items=birds_workspace_items csrf_token=csrf_token only %}
+		</div>	
+	{% endif %}
+
+	{% if perms.logbook.add_climat_record %}
+		<div class='conteiner-fluid border-top mt-3 pt-1'>
+			{% include 'parts/workspace_row.html' with room=room title='Мікроклімат в приміщенні' items=climat_workspace_items csrf_token=csrf_token only %}
+		</div>
+	{% endif %}	
+
+	{% if perms.logbook.add_service_record %}
+		<div class='conteiner-fluid border-top mt-3 pt-1'>
+			{% include 'parts/workspace_row.html' with room=room title='Сервісні роботи' items=service_workspace_items csrf_token=csrf_token only %}
+		</div>
+	{% endif %}	
+
+	{% if perms.logbook.add_vet_record %}
+		<div class='conteiner-fluid border-top mt-3 pt-1 pb-3'>
+			{% include 'parts/workspace_row.html' with room=room title='Ветеринарні роботи' items=vet_workspace_items csrf_token=csrf_token only %}
+		</div>	
+	{% endif %}	
 {% endblock %}
