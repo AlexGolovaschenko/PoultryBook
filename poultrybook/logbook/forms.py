@@ -6,7 +6,8 @@ class IntegerRecordForm(forms.Form):
 	value = forms.IntegerField(
 				label='Значение',
 				widget=forms.NumberInput(
-					attrs={'class':'form-control', 'placeholder':'Введіть значення'}
+					attrs={'class':'form-control', 'placeholder':'Введіть значення', 
+							'autocomplete':'off'}
 					)
 				)
 
@@ -15,7 +16,8 @@ class FloatRecordForm(forms.Form):
 	value = forms.FloatField(
 				label='Значение',
 				widget=forms.NumberInput(
-					attrs={'class':'form-control', 'placeholder':'Введіть значення'}
+					attrs={'class':'form-control', 'placeholder':'Введіть значення', 
+							'autocomplete':'off'}
 					)
 				)
 
@@ -26,6 +28,6 @@ class TextRecordForm(forms.Form):
 				max_length=400,
 				widget=forms.Textarea(
 					attrs={'class':'form-control', 'placeholder':'Введіть значення', 
-							'rows': 2}
+							'rows': 2, 'autocomplete':'off'}
 					)
 				)
