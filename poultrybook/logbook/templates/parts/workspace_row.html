@@ -2,9 +2,17 @@
 <h5 class="text-secondary">{{ title }}</h5>
 <div class='row'>
 	{% for item in items %}
-
 		{% include 'parts/workspace_tab.html' with room=room title=item.title html_id=item.id color_class=item.color_class icon_class=item.icon_class form=item.form csrf_token=csrf_token only %}
-	
 	{% endfor %}
+
+	{% if test %}
+	<div class='col-4 col-md-3 col-lg-2 d-flex justify-content-center p-2'>
+		<a class='ws-card btn btn-dark' href="{% url 'logbook:demo_form' %}">
+			<i class="fas fa-question-circle" style='font-size:2.3em'></i> 
+			</br> 
+			<span>Приклад</span> 
+		</a>	
+	</div>
+	{% endif %}
 </div>
 </div>

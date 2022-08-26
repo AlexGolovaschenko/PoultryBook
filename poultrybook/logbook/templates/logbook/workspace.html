@@ -23,7 +23,7 @@
 
 	{% if perms.logbook.add_service_record %}
 		<div class='conteiner-fluid border-top mt-3 pt-1'>
-			{% include 'parts/workspace_row.html' with room=room title='Сервісні роботи' items=service_workspace_items csrf_token=csrf_token only %}
+			{% include 'parts/workspace_row.html' with room=room title='Сервісні роботи' items=service_workspace_items csrf_token=csrf_token test=1 only %}
 		</div>
 	{% endif %}	
 

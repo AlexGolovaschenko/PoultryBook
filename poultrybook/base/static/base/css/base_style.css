@@ -21,3 +21,17 @@
 	padding-top: 20px;
 	overflow: hidden;
 }
+
+
+/* fix forms */
+.fix-forms.form-check-input {
+	position: relative;
+}
+input[type=checkbox].fix-forms {
+	display: inline-block;
+	transform: scale(1.4);
+	-ms-transform: scale(1.4); /* IE */
+	-moz-transform: scale(1.4); /* FF */
+	-webkit-transform: scale(1.4); /* Safari and Chrome */
+	-o-transform: scale(1.4); /* Opera */
+}

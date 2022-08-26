@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="mx-auto py-3" style="max-width:600px;">
+	<form action="" class="" method="post">
+      {% csrf_token %}
+	  <h4 class="">Демонстраційна форма</h4>
+	  
+	  {% if form %}
+		{{ form.non_field_errors }}
+	  
+		{% for field in form.visible_fields %}
+		    <div class="form-group">
+		    	<label for="{{field.id_for_label}}">{{ field.label }}:</label>
+		    	{{ field }}
+    			{{ field.errors }}
+		        {% if field.help_text %}
+		        <p class="help">{{ field.help_text|safe }}</p>
+		        {% endif %}
+		    </div>
+		{% endfor %}
+
+		{% for hidden in form.hidden_fields %}
+			{{ hidden.errors }}
+			{{ hidden }}
+		{% endfor %}
+
+	  {% else %}
+        <p>Форма відсутня!</p>
+	  {% endif %}
+
+	  {% if form %}
+        <button type="submit" value="Submit" class="btn btn-success mx-auto">Застосувати</button>
+	  {% endif %}
+	  <a class="btn btn-danger mx-auto" href="{% url 'logbook:home' %}">Відмінити</a>	  
+	</form>
+</div>
+{% endblock %}

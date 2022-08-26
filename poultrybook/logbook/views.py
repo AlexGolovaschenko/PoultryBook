@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from . import configs
 from .models import Room
 from .utils import get_datatype_model, get_datatype_form
+from .forms import RecordDemoForm
 
 
 @login_required
@@ -73,3 +74,9 @@ def save_form_data(room_number, cleaned_data):
 	Model = get_datatype_model(content_type)
 	new_record = Model(room=room, content_type=content_type, value=cleaned_data['value'])
 	new_record.save()
+
+
+@login_required
+def demo_form_view(request):
+	context={'form': RecordDemoForm()}
+	return render(request, 'logbook/record_demo_form.html', context)
